@@ -1,11 +1,8 @@
 package com.example.S2D5.controllers;
 
 import com.example.S2D5.entities.GestionePrenotazioni;
-import com.example.S2D5.entities.Viaggio;
 import com.example.S2D5.exceptions.BadRequestEx;
 import com.example.S2D5.payloads.NewPrenotazioneDTO;
-import com.example.S2D5.payloads.NewViaggioDTO;
-import com.example.S2D5.services.DipendenteService;
 import com.example.S2D5.services.GestionePrenotazioniService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

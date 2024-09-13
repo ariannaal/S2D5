@@ -1,6 +1,5 @@
 package com.example.S2D5.services;
 
-import com.example.S2D5.entities.Dipendente;
 import com.example.S2D5.entities.Viaggio;
 import com.example.S2D5.enums.StatoViaggio;
 import com.example.S2D5.exceptions.BadRequestEx;

@@ -14,7 +14,7 @@ public record NewViaggioDTO(
         @NotNull(message = "La data del viaggio e' obbligatoria")
         LocalDate dataViaggio,
 
-        @NotNull(message = "Lo stato del viaggio è obbligatorio")
+        @NotNull(message = "Lo stato del viaggio e' obbligatorio")
         StatoViaggio statoViaggio
 
 

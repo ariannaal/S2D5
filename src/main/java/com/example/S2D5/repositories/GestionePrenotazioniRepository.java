@@ -2,7 +2,6 @@ package com.example.S2D5.repositories;
 
 import com.example.S2D5.entities.Dipendente;
 import com.example.S2D5.entities.GestionePrenotazioni;
-import com.example.S2D5.entities.Viaggio;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.time.LocalDate;

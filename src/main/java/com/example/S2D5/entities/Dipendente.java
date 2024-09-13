@@ -2,8 +2,6 @@ package com.example.S2D5.entities;
 
 import jakarta.persistence.*;
 
-import java.util.List;
-
 @Entity
 @Table(name = "dipendenti")
 public class Dipendente {

@@ -6,7 +6,6 @@ import com.example.S2D5.entities.Viaggio;
 import com.example.S2D5.exceptions.BadRequestEx;
 import com.example.S2D5.exceptions.NotFoundEx;
 import com.example.S2D5.payloads.NewPrenotazioneDTO;
-import com.example.S2D5.payloads.NewViaggioDTO;
 import com.example.S2D5.repositories.DipendenteRepository;
 import com.example.S2D5.repositories.GestionePrenotazioniRepository;
 import com.example.S2D5.repositories.ViaggioRepository;
@@ -40,7 +39,7 @@ public class GestionePrenotazioniService {
         // verifica se esiste gia una prenotazione per lo stesso dipendente e data
         gestionePrenotazioniRepository.findByDipendenteAndDataPrenotazione(dipendente, body.dataPrenotazione())
                 .ifPresent(p -> {
-                    throw new BadRequestEx("Il dipendente ha già una prenotazione per la data " + body.dataPrenotazione());
+                    throw new BadRequestEx("Il dipendente ha gia' una prenotazione per la data " + body.dataPrenotazione());
                 });
 
         GestionePrenotazioni newPrenotazione = new GestionePrenotazioni();

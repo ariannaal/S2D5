@@ -4,7 +4,6 @@ import com.example.S2D5.enums.StatoViaggio;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
-import java.util.List;
 
 @Entity
 @Table(name = "viaggi")

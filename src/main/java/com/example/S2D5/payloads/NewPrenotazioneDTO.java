@@ -15,10 +15,10 @@ public record NewPrenotazioneDTO(
         @Size(min = 3, max = 100, message = "Le note e/o preferenze devono essere comprese tra 3 e 100 caratteri")
         String noteEPreferenze,
 
-        @NotNull(message = "L'ID del viaggio è obbligatorio")
+        @NotNull(message = "L'ID del viaggio e' obbligatorio")
         Integer viaggioId,
 
-        @NotNull(message = "L'ID del dipendente è obbligatorio")
+        @NotNull(message = "L'ID del dipendente e' obbligatorio")
         Integer dipendenteId
 
 ) {
