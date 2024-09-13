@@ -3,6 +3,7 @@ package com.example.S2D5.services;
 import com.example.S2D5.entities.Dipendente;
 import com.example.S2D5.entities.GestionePrenotazioni;
 import com.example.S2D5.entities.Viaggio;
+import com.example.S2D5.exceptions.BadRequestEx;
 import com.example.S2D5.exceptions.NotFoundEx;
 import com.example.S2D5.payloads.NewPrenotazioneDTO;
 import com.example.S2D5.payloads.NewViaggioDTO;
@@ -30,10 +31,17 @@ public class GestionePrenotazioniService {
     private GestionePrenotazioniRepository gestionePrenotazioniRepository;
 
     public GestionePrenotazioni save(NewPrenotazioneDTO body) {
+
         Viaggio viaggio = viaggiRepository.findById(body.viaggioId())
                 .orElseThrow(() -> new NotFoundEx("Viaggio con id  " + body.viaggioId() + " non trovato"));
         Dipendente dipendente = dipendenteRepository.findById(body.dipendenteId())
                 .orElseThrow(() -> new NotFoundEx("Dipendente con id " + body.dipendenteId() + " non trovato"));
+
+        // verifica se esiste gia una prenotazione per lo stesso dipendente e data
+        gestionePrenotazioniRepository.findByDipendenteAndDataPrenotazione(dipendente, body.dataPrenotazione())
+                .ifPresent(p -> {
+                    throw new BadRequestEx("Il dipendente ha già una prenotazione per la data " + body.dataPrenotazione());
+                });
 
         GestionePrenotazioni newPrenotazione = new GestionePrenotazioni();
         newPrenotazione.setViaggio(viaggio);
@@ -43,6 +51,7 @@ public class GestionePrenotazioniService {
 
         return gestionePrenotazioniRepository.save(newPrenotazione);
     }
+
 
     public List<GestionePrenotazioni> listaPrenotazioni() {
         return gestionePrenotazioniRepository.findAll();
