@@ -32,12 +32,6 @@ public class DipendenteController {
         return dipendenteService.save(body);
     }
 
-    //{
-    //"username": "{{$randomUserName}}",
-    //"nome": "{{$randomFirstName}}",
-    //"cognome": "{{$randomLastName}}",
-    //"email": "{{$randomEmail}}"
-    //}
 
     // GET http://localhost:3001/dipendenti / {id}
     @GetMapping("/{id}")
@@ -45,13 +39,13 @@ public class DipendenteController {
         return dipendenteService.findById(id);
     }
 
-    // **GET http://localhost:3001/viaggi**
+    // **GET http://localhost:3001/dipendenti
     @GetMapping
     public List<Dipendente> getAllDipendenti() {
         return dipendenteService.listaDipendenti();
     }
 
-    //endpoint per ricevere dati dell'immagine
+    // POST http://localhost:3001/dipendenti/{id}/immagineProfilo
     @PostMapping("/{id}/immagineProfilo")
     public void uploadImmagineProfilo(@PathVariable int id, @RequestParam("immagineProfilo") MultipartFile image) throws IOException {
         dipendenteService.uploadImmagineProfilo(id, image);

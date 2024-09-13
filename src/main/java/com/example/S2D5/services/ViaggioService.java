@@ -2,6 +2,8 @@ package com.example.S2D5.services;
 
 import com.example.S2D5.entities.Dipendente;
 import com.example.S2D5.entities.Viaggio;
+import com.example.S2D5.enums.StatoViaggio;
+import com.example.S2D5.exceptions.BadRequestEx;
 import com.example.S2D5.exceptions.NotFoundEx;
 import com.example.S2D5.payloads.NewViaggioDTO;
 import com.example.S2D5.repositories.DipendenteRepository;
@@ -36,7 +38,6 @@ public class ViaggioService {
     }
 
 
-
     public List<Viaggio> listaViaggi() {
 
         return viaggiRepository.findAll();
@@ -61,5 +62,16 @@ public class ViaggioService {
         return viaggiRepository.save(found);
     }
 
+    public Viaggio updateStatoViaggio(int id, StatoViaggio statoViaggio){
+        Viaggio viaggio = viaggiRepository.findById(id)
+                .orElseThrow(() -> new NotFoundEx("Viaggio con id " + id + " non trovato"));
+
+        if (viaggio.getStatoViaggio() == StatoViaggio.COMPLETATO) {
+            throw new BadRequestEx("Il viaggio con id " + id + " e' gia' completato e non puo' essere aggiornato.");
+        }
+
+        viaggio.setStatoViaggio(statoViaggio);
+        return viaggiRepository.save(viaggio);
+    }
 
 }

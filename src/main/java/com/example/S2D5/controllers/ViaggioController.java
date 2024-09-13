@@ -1,6 +1,7 @@
 package com.example.S2D5.controllers;
 
 import com.example.S2D5.entities.Viaggio;
+import com.example.S2D5.enums.StatoViaggio;
 import com.example.S2D5.exceptions.BadRequestEx;
 import com.example.S2D5.payloads.NewViaggioDTO;
 import com.example.S2D5.services.ViaggioService;
@@ -40,6 +41,13 @@ public class ViaggioController {
     @GetMapping
     public List<Viaggio> getAllViaggi() {
         return viaggioService.listaViaggi();
+    }
+
+    // PUT http://localhost:3001/viaggi/{id}/stato?statoViaggio=COMPLETATO
+    @PutMapping("/{id}/stato")
+    public Viaggio updateStatoViaggio (@PathVariable int id, @RequestParam StatoViaggio statoViaggio) {
+
+        return viaggioService.updateStatoViaggio(id, statoViaggio);
     }
 
 
