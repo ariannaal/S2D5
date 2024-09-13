@@ -13,13 +13,9 @@ public class Dipendente {
     private int id;
 
     private String username;
-
     private String nome;
-
     private String cognome;
-
     private String email;
-
     private String immagineProfilo;
 
 
@@ -71,6 +67,13 @@ public class Dipendente {
         this.email = email;
     }
 
+    public String getImmagineProfilo() {
+        return immagineProfilo;
+    }
+
+    public void setImmagineProfilo(String immagineProfilo) {
+        this.immagineProfilo = immagineProfilo;
+    }
 
     @Override
     public String toString() {
