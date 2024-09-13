@@ -21,7 +21,7 @@ public class ViaggioController {
 
     // POST http://localhost:3001/viaggi
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED) // <-- 201
+    @ResponseStatus(HttpStatus.CREATED)
     public Viaggio saveViaggio(@RequestBody @Validated NewViaggioDTO body, BindingResult validation) {
 
         if (validation.hasErrors()) {
@@ -30,13 +30,13 @@ public class ViaggioController {
         return viaggioService.save(body);
     }
 
-    // GET http://localhost:3001/blogposts / {id}
+    // GET http://localhost:3001/viaggi / {id}
         @GetMapping("/{id}")
         private Viaggio getSingleViaggio(@PathVariable int id){
             return viaggioService.findById(id);
         }
 
-    // GET http://localhost:3001/viaggi**
+    // GET http://localhost:3001/viaggi
     @GetMapping
     public List<Viaggio> getAllViaggi() {
         return viaggioService.listaViaggi();
