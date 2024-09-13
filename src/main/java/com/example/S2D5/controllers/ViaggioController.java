@@ -36,12 +36,11 @@ public class ViaggioController {
             return viaggioService.findById(id);
         }
 
-    // 2. - GET http://localhost:3001/blogs
-//    @GetMapping("")
-//    public List<Viaggio> getBlogs(@RequestParam(required = false) Integer authorId) {
-//        if (authorId != null) return viaggioService.findByAuthor(authorId);
-//        else return viaggioService.getBlogs();
-//    }
+    // GET http://localhost:3001/viaggi**
+    @GetMapping
+    public List<Viaggio> getAllViaggi() {
+        return viaggioService.listaViaggi();
+    }
 
 
 

@@ -1,6 +1,7 @@
 package com.example.S2D5.services;
 
 import com.example.S2D5.entities.Dipendente;
+import com.example.S2D5.entities.Viaggio;
 import com.example.S2D5.exceptions.NotFoundEx;
 import com.example.S2D5.payloads.NewDipendenteDTO;
 import com.example.S2D5.repositories.DipendenteRepository;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.List;
 
 @Service
 public class DipendenteService {
@@ -23,6 +25,11 @@ public class DipendenteService {
 
     @Autowired
     private GestionePrenotazioniRepository gestionePrenotazioniRepository;
+
+    public List<Dipendente> listaDipendenti() {
+
+        return dipendenteRepository.findAll();
+    }
 
     public Dipendente save(NewDipendenteDTO body) throws IOException {
         dipendenteRepository.findByEmail(body.email()).ifPresent(user -> {

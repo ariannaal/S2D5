@@ -11,6 +11,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.List;
 
 @RestController
 @RequestMapping("/dipendenti")
@@ -41,5 +42,11 @@ public class DipendenteController {
     @GetMapping("/{id}")
     private Dipendente getSingleDipendente(@PathVariable int id){
         return dipendenteService.findById(id);
+    }
+
+    // **GET http://localhost:3001/viaggi**
+    @GetMapping
+    public List<Dipendente> getAllDipendenti() {
+        return dipendenteService.listaDipendenti();
     }
 }
