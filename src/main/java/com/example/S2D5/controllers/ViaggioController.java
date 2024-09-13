@@ -28,6 +28,7 @@ public class ViaggioController {
         if (validation.hasErrors()) {
             throw new BadRequestEx(validation.getAllErrors());
         }
+
         return viaggioService.save(body);
     }
 

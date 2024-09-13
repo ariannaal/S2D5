@@ -33,7 +33,12 @@ public class ViaggioService {
         newViaggio.setDestinazione(body.destinazione());
         newViaggio.setDataViaggio(body.dataViaggio());
         newViaggio.setStatoViaggio(body.statoViaggio());
-        return viaggiRepository.save(newViaggio);
+
+        Viaggio viaggioSalvato = viaggiRepository.save(newViaggio);
+        System.out.println("Viaggio salvato con successo: " + viaggioSalvato);
+
+        return viaggioSalvato;
+
     }
 
 

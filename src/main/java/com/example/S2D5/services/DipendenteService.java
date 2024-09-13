@@ -3,6 +3,7 @@ package com.example.S2D5.services;
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 import com.example.S2D5.entities.Dipendente;
+import com.example.S2D5.entities.Viaggio;
 import com.example.S2D5.exceptions.NotFoundEx;
 import com.example.S2D5.payloads.NewDipendenteDTO;
 import com.example.S2D5.repositories.DipendenteRepository;
@@ -51,7 +52,11 @@ public class DipendenteService {
         newDipendente.setCognome(body.cognome());
         newDipendente.setEmail(body.email());
 
-        return dipendenteRepository.save(newDipendente);
+        Dipendente dipendenteSalvato = dipendenteRepository.save(newDipendente);
+        System.out.println("Dipendente salvato con successo: " + dipendenteSalvato);
+
+        return dipendenteSalvato;
+
     }
 
     public Dipendente findById(int id) {

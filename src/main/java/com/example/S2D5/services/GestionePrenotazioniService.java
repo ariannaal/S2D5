@@ -48,7 +48,12 @@ public class GestionePrenotazioniService {
         newPrenotazione.setDataPrenotazione(body.dataPrenotazione());
         newPrenotazione.setNoteEPreferenze(body.noteEPreferenze());
 
-        return gestionePrenotazioniRepository.save(newPrenotazione);
+        GestionePrenotazioni prenotazioneSalvata = gestionePrenotazioniRepository.save(newPrenotazione);
+        System.out.println("Prenotazione salvata con successo: " + prenotazioneSalvata);
+        gestionePrenotazioniRepository.save(newPrenotazione);
+        return prenotazioneSalvata;
+
+
     }
 
 
