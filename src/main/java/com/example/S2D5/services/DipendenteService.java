@@ -1,5 +1,7 @@
 package com.example.S2D5.services;
 
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
 import com.example.S2D5.entities.Dipendente;
 import com.example.S2D5.entities.Viaggio;
 import com.example.S2D5.exceptions.NotFoundEx;
@@ -10,9 +12,11 @@ import com.example.S2D5.repositories.ViaggioRepository;
 import org.apache.coyote.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class DipendenteService {
@@ -25,6 +29,9 @@ public class DipendenteService {
 
     @Autowired
     private GestionePrenotazioniRepository gestionePrenotazioniRepository;
+
+    @Autowired
+    private Cloudinary cloudinary;
 
     public List<Dipendente> listaDipendenti() {
 
@@ -65,6 +72,19 @@ public class DipendenteService {
         found.setEmail(body.getEmail());
         found.setImmagineProfilo(body.getImmagineProfilo());
         return dipendenteRepository.save(found);
+    }
+
+    // upload immaginme profilo
+    public void uploadImmagineProfilo(int id, MultipartFile image) throws IOException {
+        Dipendente dipendente = dipendenteRepository.findById(id)
+                .orElseThrow(() -> new NotFoundEx("Dipendente con id " + id + " non trovato."));
+
+        Map<String, Object> uploadResult = cloudinary.uploader().upload(image.getBytes(), ObjectUtils.emptyMap());
+        String immagineCover = uploadResult.get("url").toString();
+        System.out.println("URL: " + immagineCover);
+
+        dipendente.setImmagineProfilo(immagineCover);
+        dipendenteRepository.save(dipendente);
     }
 
 
