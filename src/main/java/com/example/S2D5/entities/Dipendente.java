@@ -1,4 +1,4 @@
-package entities;
+package com.example.S2D5.entities;
 
 import jakarta.persistence.*;
 
@@ -22,8 +22,6 @@ public class Dipendente {
 
     private String immagineProfilo;
 
-    @OneToMany(mappedBy = "dipendente")
-    private List<GestionePrenotazioni> prenotazioni;
 
     public Dipendente(){
     }
@@ -40,9 +38,6 @@ public class Dipendente {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getUsername() {
         return username;
@@ -76,13 +71,6 @@ public class Dipendente {
         this.email = email;
     }
 
-    public List<GestionePrenotazioni> getPrenotazioni() {
-        return prenotazioni;
-    }
-
-    public void setPrenotazioni(List<GestionePrenotazioni> prenotazioni) {
-        this.prenotazioni = prenotazioni;
-    }
 
     @Override
     public String toString() {

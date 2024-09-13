@@ -1,4 +1,4 @@
-package entities;
+package com.example.S2D5.entities;
 
 import com.example.S2D5.enums.StatoViaggio;
 import jakarta.persistence.*;
@@ -18,11 +18,8 @@ public class Viaggio {
 
     private LocalDate dataViaggio;
 
+    @Enumerated(EnumType.STRING)
     private StatoViaggio statoViaggio;
-
-    @OneToMany(mappedBy = "viaggio")
-    private List<GestionePrenotazioni> prenotazioni;
-
 
     public Viaggio() {
     }
@@ -66,13 +63,6 @@ public class Viaggio {
         this.statoViaggio = statoViaggio;
     }
 
-    public List<GestionePrenotazioni> getPrenotazioni() {
-        return prenotazioni;
-    }
-
-    public void setPrenotazioni(List<GestionePrenotazioni> prenotazioni) {
-        this.prenotazioni = prenotazioni;
-    }
 
     @Override
     public String toString() {

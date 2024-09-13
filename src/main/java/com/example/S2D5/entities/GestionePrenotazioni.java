@@ -1,10 +1,11 @@
-package entities;
+package com.example.S2D5.entities;
 
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
 @Entity
+@Table(name = "gestione_prenotazioni")
 public class GestionePrenotazioni {
 
     @Id
@@ -22,6 +23,9 @@ public class GestionePrenotazioni {
     private LocalDate dataPrenotazione;
 
     private String noteEPreferenze;
+
+    public GestionePrenotazioni() {
+    }
 
     public GestionePrenotazioni(int id, Viaggio viaggio, Dipendente dipendente, LocalDate dataPrenotazione, String noteEPreferenze) {
         this.id = id;
