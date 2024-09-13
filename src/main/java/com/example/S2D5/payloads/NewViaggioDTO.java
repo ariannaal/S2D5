@@ -15,11 +15,8 @@ public record NewViaggioDTO(
         LocalDate dataViaggio,
 
         @NotNull(message = "Lo stato del viaggio è obbligatorio")
-        StatoViaggio statoViaggio,
+        StatoViaggio statoViaggio
 
-        @NotNull(message = "L'ID del dipendente e' obbligatorio")
-        @Min(value = 1, message = "L'ID del dipendente deve essere un numero positivo")
-        int dipendenteId
 
 ) {
 }

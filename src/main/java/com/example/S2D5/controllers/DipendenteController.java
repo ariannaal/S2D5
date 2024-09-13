@@ -30,6 +30,13 @@ public class DipendenteController {
         return dipendenteService.save(body);
     }
 
+    //{
+    //"username": "{{$randomUserName}}",
+    //"nome": "{{$randomFirstName}}",
+    //"cognome": "{{$randomLastName}}",
+    //"email": "{{$randomEmail}}"
+    //}
+
     // GET http://localhost:3001/dipendenti / {id}
     @GetMapping("/{id}")
     private Dipendente getSingleDipendente(@PathVariable int id){

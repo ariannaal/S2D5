@@ -28,13 +28,14 @@ public class ViaggioService {
     private DipendenteService dipendenteService;
 
     public Viaggio save(NewViaggioDTO body) {
-        Dipendente dipendente = dipendenteService.findById(body.dipendenteId());
         Viaggio newViaggio = new Viaggio();
         newViaggio.setDestinazione(body.destinazione());
         newViaggio.setDataViaggio(body.dataViaggio());
         newViaggio.setStatoViaggio(body.statoViaggio());
         return viaggiRepository.save(newViaggio);
     }
+
+
 
     public List<Viaggio> listaViaggi() {
 

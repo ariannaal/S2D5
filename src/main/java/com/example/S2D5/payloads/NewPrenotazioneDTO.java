@@ -20,5 +20,6 @@ public record NewPrenotazioneDTO(
 
         @NotNull(message = "L'ID del dipendente è obbligatorio")
         Integer dipendenteId
+
 ) {
 }
