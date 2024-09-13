@@ -13,11 +13,8 @@ public class Viaggio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
     private String destinazione;
-
     private LocalDate dataViaggio;
-
     @Enumerated(EnumType.STRING)
     private StatoViaggio statoViaggio;
 
